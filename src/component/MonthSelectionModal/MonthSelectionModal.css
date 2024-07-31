@@ -1,0 +1,41 @@
+.month-selection-modal {
+    width: 100svw;
+    height: 100svh;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.month-selection-grid {
+    padding: 10px;
+    display: grid; 
+    grid-template-columns: auto auto; 
+    width: 500px;
+    height: 400px;
+    background-color: #555454;
+    border-radius: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.month-item {
+    color: #fff; 
+    font-size: 1.8rem;
+    text-align: center;
+    align-content: center;
+}
+
+.month-item:hover {
+    background-color: #333;
+    border-radius: 10px;
+    cursor: pointer;
+}

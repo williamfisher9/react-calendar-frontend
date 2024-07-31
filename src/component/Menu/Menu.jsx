@@ -9,10 +9,10 @@ function Menu(){
         
         <div className="menu-items">
             <div className="icon-item">
-                <i class="icon fa-regular fa-calendar-days"></i><span className='icon-desc'>Calendar</span>
+                <i className="icon fa-regular fa-calendar-days"></i><span className='icon-desc'>Calendar</span>
             </div>
             <div className="icon-item">
-                <i class="icon fa-solid fa-list-check"></i><span className='icon-desc'>Tasks</span>
+                <i className="icon fa-solid fa-list-check"></i><span className='icon-desc'>Tasks</span>
             </div>
         </div>
     </div>

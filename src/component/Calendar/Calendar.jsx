@@ -55,7 +55,13 @@ function Calendar() {
 
   let numOfRows;
 
+  let handleTaskClick = () => {
+    console.log("item clicked")
+  }
+
   function buildCalendarRows() {
+    
+
     //console.log(`todays date is: ${day}`)
     //console.log(`todays month is: ${months[month]}`)
     //console.log(`todays year is: ${year}`)
@@ -111,13 +117,13 @@ function Calendar() {
 
     for (let i = 1; i <= numOfRows * 7; i++) {
       val.push(
-        <div className="calendar-item" key={i}>
+        <div className="calendar-item" key={i} onClick={handleTaskClick}>
           <span
             className={
               i < firstDayOfTheMonth.getDay() + 1 ||
               dayCounter > numOfDaysInMonth
                 ? null
-                : "day-count"
+                : new Date().toLocaleDateString('en-US',{ year: 'numeric', month: '2-digit', day: '2-digit' }) === `${(month+1).toString().padStart(2, '0')}/${dayCounter}/${new Date().getFullYear()}` ? 'day-count day-count-highlight' : 'day-count'
             }
           >
             {i <= firstDayOfTheMonth.getDay() || dayCounter > numOfDaysInMonth

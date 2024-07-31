@@ -77,3 +77,8 @@
         width: 500px;
     }
 }
+
+.day-count-highlight {
+    background-color: #0091ff;
+    border-radius: 50%;
+}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import './Calendar.css';
 
 import MonthSelectionControl from '../MonthSelectionControl/MonthSelectionControl'
@@ -15,10 +15,14 @@ import image9 from '../../assets/9.jpg';
 import image10 from '../../assets/10.jpg';
 import image11 from '../../assets/11.jpg';
 import image12 from '../../assets/12.jpg';
+import HasTask from "../HasTask/HasTask";
+import { TasksContext } from "../Layout/Layout";
 
 function Calendar() {
   let [month, setMonth] = useState(new Date().getMonth());
   let [year, setYear] = useState(new Date().getFullYear());
+
+  let tasksContextUser = useContext(TasksContext);
 
   let images = [
     image1,
@@ -36,6 +40,9 @@ function Calendar() {
   ];
 
   function handleMonthsSwitcher(operation) {
+    //console.log(tasksContextUser.tasks)
+    //tasksContextUser.setTasks([...tasksContextUser.tasks, '01/01/2025'])
+    //console.log(tasksContextUser.tasks)
     if (operation == "add") {
       setMonth(++month);
       if (month > 11) {
@@ -60,6 +67,20 @@ function Calendar() {
   }
 
   function buildCalendarRows() {
+
+    let tasksContextUser = useContext(TasksContext);
+
+    let checkIfTaskExists = (date) => {
+      for(let i = 0; i<tasksContextUser.tasks.length; i++){
+        //console.log(`date ${date}`)
+        //console.log(`context ${i} : ${tasksContextUser.tasks[i]}`)
+        if(date === tasksContextUser.tasks[i]){
+          return true;
+        }
+      }
+
+      return false;
+    }
     
 
     //console.log(`todays date is: ${day}`)
@@ -118,6 +139,10 @@ function Calendar() {
     for (let i = 1; i <= numOfRows * 7; i++) {
       val.push(
         <div className="calendar-item" key={i} onClick={handleTaskClick}>
+          
+          {i <= firstDayOfTheMonth.getDay() || dayCounter > numOfDaysInMonth ? null : 
+            checkIfTaskExists(`${(month+1).toString().padStart(2, '0')}/${dayCounter}/${year}`) ? <HasTask showIcon={true}/> : null
+          }
           <span
             className={
               i < firstDayOfTheMonth.getDay() + 1 ||

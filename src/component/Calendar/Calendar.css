@@ -42,6 +42,7 @@
 }
 
 .calendar-item {
+    position: relative;
     align-content: center;
     text-align: center;
     color: #fff;

@@ -1,0 +1,9 @@
+.has-task {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    top: 12px;
+    right: 12px;
+    background-color: rgb(255, 242, 0);
+}
